@@ -8,4 +8,11 @@ export const HeaderWrapper = styled.div`
   border-bottom: 1px solid var(--bg-color);
   padding: 0 24px;
   box-sizing: border-box;
+  &.fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
 `
