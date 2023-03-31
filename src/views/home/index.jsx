@@ -4,10 +4,11 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import HomeBanner from './components/HomeBanner'
 import HomeSection from './components/HomeSection'
 import HomeSection2 from './components/HomeSection2'
+import HomeSection3 from './components/HomeSection3'
 import { HomeWrapper } from './style'
 
 const Home = memo(() => {
-  const { good, high, discount, hot } = useSelector(({ home }) => home, shallowEqual)
+  const { good, high, discount, hot, plus } = useSelector(({ home }) => home, shallowEqual)
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -21,11 +22,13 @@ const Home = memo(() => {
         {/* 折扣房源 */}
         {discount.title && <HomeSection2 infoData={discount} />}
         {/* 热门房源 */}
-        {/* {hot.title && <HomeSection2 infoData={hot} />} */}
+        {hot.title && <HomeSection2 infoData={hot} />}
         {/* 高性价比房源 */}
         {good.title && <HomeSection infoData={good} />}
         {/* 高分好评房源 */}
         {high.title && <HomeSection infoData={high} />}
+        {/* PLUS房源 */}
+        {plus.title && <HomeSection3 infoData={plus} />}
       </div>
     </HomeWrapper>
   )

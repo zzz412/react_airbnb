@@ -4,6 +4,8 @@ import {
   getHomeGoodPriceData,
   getHomeHighScoreData,
   getHomeHotData,
+  getHomeLongforData,
+  getHomePlusData,
 } from '@/api/modules/home'
 import { createSlice } from '@reduxjs/toolkit'
 
@@ -15,6 +17,8 @@ const homeSlice = createSlice({
     high: {}, // 高分房源
     hot: {}, // 热门房源
     discount: {}, // 折扣房源
+    longfor: {}, // 猜你想去
+    plus: {}, // plus房源
   },
   reducers: {
     setRoom(state, { payload }) {
@@ -22,6 +26,8 @@ const homeSlice = createSlice({
       state.high = payload[1]
       state.hot = payload[2]
       state.discount = payload[3]
+      state.longfor = payload[4]
+      state.plus = payload[5]
     },
   },
 })
@@ -33,6 +39,8 @@ export const getHomeDateAction = () => async (dispatch) => {
     getHomeHighScoreData(),
     getHomeHotData(),
     getHomeDiscountData(),
+    getHomeLongforData(),
+    getHomePlusData()
   ]
   // Promise.all 效果:  执行所有Promise结果  并在所有结果full后  返回内容
   const res = await Promise.all(requestArr)

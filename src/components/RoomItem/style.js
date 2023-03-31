@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const RoomWrapper = styled.div`
   width: ${props => props.width};
+  flex-shrink: 0;
   padding: 8px;
   box-sizing: border-box;
   .content {
