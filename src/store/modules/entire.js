@@ -6,6 +6,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const EntireSlice = createSlice({
   name: 'entire',
   initialState: {
+    loading: true,
     list: [], // 房源列表
     totalCount: 0, // 总条数
   },
@@ -15,19 +16,24 @@ const EntireSlice = createSlice({
     },
     setTotal(state, { payload }) {
       state.totalCount = payload
+    },
+    setLoading(state, { payload }) {
+      state.loading = payload
     }
   },
 })
 
 // 分页获取房源列表数据
 export const getRoomListAction = (page) => async (dispatch) => {
+  dispatch(setLoading(true))
   const res = await getEntireRoomList(page * 20, 20)
   dispatch(setList(res.list))
   dispatch(setTotal(res.totalCount))
+  dispatch(setLoading(false))
 }
 
 // 导出action
-export const { setList, setTotal } = EntireSlice.actions
+export const { setList, setTotal, setLoading } = EntireSlice.actions
 
 // 导出reducer
 export default EntireSlice.reducer

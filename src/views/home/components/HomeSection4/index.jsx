@@ -14,9 +14,9 @@ const HomeSection4 = memo(({ infoData = {} }) => {
             <div className='longfor-item' key={item.city}>
               <div className='content'>
                 <img className='cover' src={item.picture_url} alt='' />
-                <div class='info'>
-                  <div class='city'>{item.city}</div>
-                  <div class='price'>均价 {item.price}</div>
+                <div className='info'>
+                  <div className='city'>{item.city}</div>
+                  <div className='price'>均价 {item.price}</div>
                 </div>
                 <div className='bg'></div>
               </div>

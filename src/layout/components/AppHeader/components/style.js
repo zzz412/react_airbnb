@@ -50,6 +50,9 @@ export const LeftWrapper = styled.div`
   .logo {
     color: var(--p-color);
   }
+  .icon {
+    display: inline-block;
+  }
 `
 
 // 右边

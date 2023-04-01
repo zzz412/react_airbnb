@@ -1,15 +1,79 @@
-import React, { memo } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import { RoomWrapper } from './style'
 import PropTypes from 'prop-types'
-import { Rate } from 'antd'
+import { Carousel, Rate } from 'antd'
+import IconArrowLeft from '@/assets/svg/icon-arrow-left'
+import IconArrowRight from '@/assets/svg/icon-arrow-right'
+import classNames from 'classnames'
+import ScrollView from '@/base_ui/ScrollView'
+import Indicator from '@/base_ui/Indicator'
 
 const RoomItem = memo(({ item, width = '25%' }) => {
-  return (
-    <RoomWrapper rateColor={item.star_rating_color} textColor={item.verify_info.text_color} width={width}>
-      <div className='content'>
-        <div className='cover'>
-          <img src={item.picture_url} alt='' />
+  const sliderRef = useRef()
+  const [current, setCurrent] = useState(0)
+
+  const changeSlider = (isRight) => {
+    isRight ? sliderRef.current.next() : sliderRef.current.prev()
+  }
+
+  // 多图
+  const SlideEl = (
+    <div className='slider'>
+      {/* 控制按钮 */}
+      <div className='control'>
+        <div className='left' onClick={() => changeSlider()}>
+          <IconArrowLeft width='18' height='18' />
         </div>
+        <div className='right' onClick={() => changeSlider(true)}>
+          <IconArrowRight width='18' height='18' />
+        </div>
+      </div>
+
+      {/* 指示器 */}
+      <div className='indicator'>
+        <Indicator current={current}>
+          {item.picture_urls?.map((item, index) => (
+            <div
+              className={classNames('item', { active: current === index })}
+              key={item}
+            >
+              <div className='dot'></div>
+            </div>
+          ))}
+        </Indicator>
+      </div>
+
+      {/* 走马灯 */}
+      <Carousel
+        ref={sliderRef}
+        dots={false}
+        beforeChange={(from, to) => setCurrent(to)}
+      >
+        {item.picture_urls?.map((item) => (
+          <div className='cover' key={item}>
+            <img src={item} alt='' />
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  )
+
+  // 单图
+  const PictureEl = (
+    <div className='cover'>
+      <img src={item.picture_url} alt='' />
+    </div>
+  )
+
+  return (
+    <RoomWrapper
+      rateColor={item.star_rating_color}
+      textColor={item.verify_info.text_color}
+      width={width}
+    >
+      <div className='content'>
+        {/* 轮播图显示条件:  picture_urls  */}
+        {item.picture_urls ? SlideEl : PictureEl}
         <div className='desc'>{item.verify_info.messages.join(' · ')}</div>
         <div className='name mle'>{item.name}</div>
         <div className='price'>{item.price_format}/晚</div>
@@ -30,7 +94,7 @@ const RoomItem = memo(({ item, width = '25%' }) => {
 
 RoomItem.propTypes = {
   item: PropTypes.object,
-  width: PropTypes.string
+  width: PropTypes.string,
 }
 
 RoomItem.displayName = 'RoomItem'

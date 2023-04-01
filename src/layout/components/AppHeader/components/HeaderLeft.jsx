@@ -8,8 +8,10 @@ const HeaderLeft = memo(() => {
 
   return (
     <LeftWrapper className='header-left'>
-      <div className='logo' onClick={() => navigate('/')}>
-        <IconLogo />
+      <div className='logo'>
+        <div className='icon' onClick={() => navigate('/')}>
+          <IconLogo />
+        </div>
       </div>
     </LeftWrapper>
   )

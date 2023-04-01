@@ -16,4 +16,14 @@ export const ListWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.5);
+    z-index: 8;
+    height: 100%;
+  }
 `

@@ -12,6 +12,7 @@ const EntirePagination = memo(() => {
   // 滚动处理: 1. 页码改变时置顶  2. 跳转页面时置顶
   const dispatch = useDispatch()
   const pageChange = (page) => {
+    window.scrollTo({ top: 0 })
     setCurrent(page)
     dispatch(getRoomListAction(page - 1))
   }
@@ -28,7 +29,9 @@ const EntirePagination = memo(() => {
         total={totalCount}
         showSizeChanger={false}
       />
-      <div className='info'>第 {start} - {end} 个房源, 共超过 {totalCount} 个</div>
+      <div className='info'>
+        第 {start} - {end} 个房源, 共超过 {totalCount} 个
+      </div>
     </PaginationWrapper>
   )
 })
