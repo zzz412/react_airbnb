@@ -5,15 +5,15 @@ import { Carousel, Rate } from 'antd'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import classNames from 'classnames'
-import ScrollView from '@/base_ui/ScrollView'
 import Indicator from '@/base_ui/Indicator'
 
-const RoomItem = memo(({ item, width = '25%' }) => {
+const RoomItem = memo(({ item, width = '25%', itemClick }) => {
   const sliderRef = useRef()
   const [current, setCurrent] = useState(0)
 
-  const changeSlider = (isRight) => {
+  const changeSlider = (isRight, event) => {
     isRight ? sliderRef.current.next() : sliderRef.current.prev()
+    event.stopPropagation()
   }
 
   // 多图
@@ -21,10 +21,10 @@ const RoomItem = memo(({ item, width = '25%' }) => {
     <div className='slider'>
       {/* 控制按钮 */}
       <div className='control'>
-        <div className='left' onClick={() => changeSlider()}>
+        <div className='left' onClick={(e) => changeSlider(false, e)}>
           <IconArrowLeft width='18' height='18' />
         </div>
-        <div className='right' onClick={() => changeSlider(true)}>
+        <div className='right' onClick={(e) => changeSlider(true, e)}>
           <IconArrowRight width='18' height='18' />
         </div>
       </div>
@@ -65,13 +65,18 @@ const RoomItem = memo(({ item, width = '25%' }) => {
     </div>
   )
 
+  // 跳转方法
+  const goPage = () => {
+    itemClick && itemClick(item)
+  }
+
   return (
     <RoomWrapper
       rateColor={item.star_rating_color}
       textColor={item.verify_info.text_color}
       width={width}
     >
-      <div className='content'>
+      <div className='content' onClick={goPage}>
         {/* 轮播图显示条件:  picture_urls  */}
         {item.picture_urls ? SlideEl : PictureEl}
         <div className='desc'>{item.verify_info.messages.join(' · ')}</div>

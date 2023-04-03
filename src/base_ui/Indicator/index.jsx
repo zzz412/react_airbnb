@@ -18,9 +18,11 @@ const Indicator = memo(({ children, current }) => {
 
     // 计算每次移动距离
     let width = leftWidth + elWidth / 2 - clientWidth / 2
-    // 移动距离小于容器一半时  不移动
+
+    // 移动距离小于0  不移动了
     if (width < 0) width = 0
-    // 超过总滚动距离的一半    不移动
+
+    // 移动距离大于总移动距离
     if (width > totalWidth) width = totalWidth
 
     scrollRef.current.style.transform = `translateX(-${width}px)`
