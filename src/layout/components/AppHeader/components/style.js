@@ -14,8 +14,13 @@ const fc = `
 
 // 中间
 export const CenterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 48px;
+  
   .search-bar {
-    ${fc}
+    position: absolute;
+    ${fc};
     justify-content: space-between;
     width: 300px;
     height: 48px;
@@ -24,8 +29,10 @@ export const CenterWrapper = styled.div`
     border: 1px solid #ddd;
     border-radius: 24px;
     cursor: pointer;
-    ${shadow}
+    transform-origin: center top;
+    
 
+    ${shadow}
     .text {
       color: var(--text-color2);
       font-weight: 600;
@@ -33,13 +40,128 @@ export const CenterWrapper = styled.div`
     }
 
     .icon {
-      ${fc}
+      ${fc};
       width: 32px;
       height: 32px;
       color: #fff;
       background-color: var(--p-color);
       border-radius: 50%;
     }
+  }
+
+  .search-tabs {
+    position: relative;
+    transform-origin: center top;
+
+    .tabs {
+      display: flex;
+      color: #222;
+
+      .tab {
+        width: 64px;
+        cursor: pointer;
+        margin: 0 16px;
+        padding: 10px 0;
+        box-sizing: border-box;
+        font-size: 16px;
+
+        &.active {
+          border-bottom: 2px solid #333;
+        }
+      }
+    }
+
+    .items {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 99;
+
+      .bar {
+        display: flex;
+        width: 850px;
+        height: 66px;
+        border-radius: 32px;
+        border: 1px solid rgb(221, 221, 221);
+        background-color: rgb(255, 255, 255);
+
+        .item {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          border-radius: 32px;
+
+          &:hover {
+            background-color: #eeeeee;
+          }
+
+          .info {
+            padding: 0 30px;
+            flex: 1;
+
+            .city {
+              font-size: 12px;
+              font-weight: 800;
+              color: rgb(34, 34, 34);
+            }
+
+            .wtf {
+              font-size: 14px;
+              color: rgb(102, 102, 102);
+            }
+          }
+
+          .divider {
+            height: 32px;
+            width: 1px;
+            background-color: rgb(221, 221, 221);
+          }
+
+
+        }
+      }
+    }
+  }
+
+  //  bar
+  .bar-enter {
+    opacity: 0;
+    transform: translateY(40px) scale(1.5);
+  }
+
+  .bar-enter-active {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    transition: all .25s ease;
+  }
+
+  .bar-exit {
+    opacity: 0;
+  }
+
+  //  tabs
+  .tabs-enter {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.6);
+  }
+
+  .tabs-enter-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: all .25s ease;
+  }
+
+  .tabs-exit {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .tabs-exit-active {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.6);
+    transition: all .25s ease;
   }
 `
 

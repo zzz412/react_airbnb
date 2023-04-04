@@ -1,14 +1,14 @@
-import {setHeaderConfig} from '@/store/modules/global'
-import {getHomeDateAction} from '@/store/modules/home'
-import {Skeleton} from 'antd'
-import React, {memo, useEffect} from 'react'
-import {shallowEqual, useDispatch, useSelector} from 'react-redux'
+import { setHeaderConfig } from '@/store/modules/global'
+import { getHomeDateAction } from '@/store/modules/home'
+import { Skeleton } from 'antd'
+import React, { memo, useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import HomeBanner from './components/HomeBanner'
 import HomeSection from './components/HomeSection'
 import HomeSection2 from './components/HomeSection2'
 import HomeSection3 from './components/HomeSection3'
 import HomeSection4 from './components/HomeSection4'
-import {HomeWrapper } from './style'
+import { HomeWrapper } from './style'
 
 const Home = memo(() => {
   const {good, high, discount, hot, plus, longfor, isLoading} = useSelector(
