@@ -8,6 +8,7 @@ const GlobalSlice = createSlice({
     // 头部配置
     headerConfig: {
       isFixed: false,
+      topTM: false,
     },
   },
   reducers: {

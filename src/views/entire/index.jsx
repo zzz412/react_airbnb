@@ -10,7 +10,7 @@ import { getRoomListAction } from '@/store/modules/entire'
 const Entire = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setHeaderConfig({ isFixed: true }))
+    dispatch(setHeaderConfig({ isFixed: true, topTM: false }))
     dispatch(getRoomListAction())
   }, [dispatch])
 

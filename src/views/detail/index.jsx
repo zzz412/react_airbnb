@@ -8,7 +8,7 @@ import { setHeaderConfig } from '@/store/modules/global'
 const Detail = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setHeaderConfig({ isFixed: false }))
+    dispatch(setHeaderConfig({ isFixed: false, topTM: false }))
   }, [])
   
   return (

@@ -3,7 +3,7 @@ import { getHomeDateAction } from '@/store/modules/home'
 import { Skeleton } from 'antd'
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import HomeBanner from './components/HomeBanner'
+import HomeBanner from "./components/HomeBanner"
 import HomeSection from './components/HomeSection'
 import HomeSection2 from './components/HomeSection2'
 import HomeSection3 from './components/HomeSection3'
@@ -19,15 +19,15 @@ const Home = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getHomeDateAction())
-    dispatch(setHeaderConfig({isFixed: false}))
+    dispatch(setHeaderConfig({isFixed: true, topTM: true}))
   }, [dispatch])
 
   return (
     <HomeWrapper>
       <HomeBanner/>
-      <div className='content'>
+      <div className="content">
         <Skeleton
-          className='skeleton'
+          className="skeleton"
           loading={isLoading}
           active
           paragraph={{rows: 8}}

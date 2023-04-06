@@ -13,8 +13,8 @@ export const HeaderWrapper = styled.div`
     display: flex;
     height: 80px;
     align-items: center;
-    background-color: #FFF;
-    border-bottom: 1px solid var(--bg-color);
+    background-color: ${props => props.theme.isTM ? 'rgba(0,0,0,0)' : '#FFF'};
+    border-bottom: 1px solid ${props => props.theme.isTM ? 'rgba(0,0,0,0)' : 'var(--bg-color)'};
     padding: 0 24px;
     box-sizing: border-box;
     z-index: 9999;
@@ -27,7 +27,7 @@ export const HeaderWrapper = styled.div`
     top: 60px;
     left: 0;
     right: 0;
-    background-color: #FFF;
+    background-color: ${props => props.theme.isTM ? 'rgba(0,0,0,0)' : '#FFF'};
     transition: height .25s ease;
     height: ${props => props.isSearch ? 100 : 0}px;
     z-index: -1;
