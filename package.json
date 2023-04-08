@@ -12,6 +12,8 @@
     "antd": "^5.3.3",
     "axios": "^1.3.4",
     "classnames": "^2.3.2",
+    "commitizen": "^4.3.0",
+    "cz-customizable": "^7.0.0",
     "dotenv": "^16.0.3",
     "husky": "^8.0.3",
     "lodash": "^4.17.21",
@@ -28,7 +30,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "commit": "cz"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +54,10 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "sass": "^1.60.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
