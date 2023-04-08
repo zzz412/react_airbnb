@@ -6,6 +6,7 @@
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
     "@reduxjs/toolkit": "^1.9.3",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -31,7 +32,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "commit": "cz"
+    "commit": "cz",
+    "release": "release-it"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.1.0",
+    "release-it": "^15.10.1",
     "sass": "^1.60.0"
   },
   "config": {
