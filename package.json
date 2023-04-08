@@ -1,6 +1,6 @@
 {
   "name": "09__react_airbnb",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@commitlint/cli": "^17.5.1",
